@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: panclassif
+Version: 1.21.7
+Summary: A method to improve TCGA pancancer classifiers performance
+Home-page: https://github.com/Zwei-inc/panclassif
+Author: Md. Robiuddin, Kazi Ferdous Mahin
+Author-email: mrrobi040@gmail.com
+License: UNKNOWN
+Project-URL: Bug Tracker, https://github.com/Zwei-inc/panclassif/issues
+Description: # Example Package
+        
+        This is a simple example package. You can use
+        [Github-flavored Markdown](https://guides.github.com/features/mastering-markdown/)
+        to write your content.
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
