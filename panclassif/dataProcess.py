@@ -32,9 +32,9 @@ def dataProcess(homepath,names,cancerpath,smoothed_cancer,smoothed_normal):
 	Outputs:
 	--------
 	Split the treated data into train and test. train datas
-	are saved in "~/pre_upsample_train_data" and test datas
-	are save in "~/test_data". Unique genes name are saved
-	in "~/std_npy" folder as "unique_genes_with_frequency.csv" 
+	are saved in "/pre_upsample_train_data" and test datas
+	are save in "/test_data". Unique genes name are saved
+	in "/std_npy" folder as "unique_genes_with_frequency.csv" 
 	with their respective frequency.
 	'''
 

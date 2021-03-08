@@ -5,6 +5,7 @@ panclassif/__init__.py
 panclassif/binarymerge.py
 panclassif/dataProcess.py
 panclassif/featSelect.py
+panclassif/gseapy.py
 panclassif/models.py
 panclassif/multimerge.py
 panclassif/stepfive.py

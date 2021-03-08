@@ -4,23 +4,26 @@ from .binarymerge import btrain, btest
 from .multimerge import mtrain, mtest
 from .upsampling_train_data import upsampled
 from .models import classification
+from .gseapy import gsea
 
-'''
-Functions:
-----------
-`featSelect`: 
-  Use for feature selection from data. 
-`dataProcess`: 
-  Use for processing the data.
-`upsampled`: 
-  Use for upsampling train data.
-`binarymerger`: 
-  Merging data for binary classification.
-`multimerger`: 
-  Merging data for multiclass classification.
-`classification`: 
-  Use for performing classification.
-'''
+def __init__(self):
+	'''
+	Functions:
+	----------
+	`featSelect`: 
+	  Use for feature selection from data. 
+	`dataProcess`: 
+	  Use for processing the data.
+	`upsampled`: 
+	  Use for upsampling train data.
+	`binarymerger`: 
+	  Merging data for binary classification.
+	`multimerger`: 
+	  Merging data for multiclass classification.
+	`classification`: 
+	  Use for performing classification.
+	'''
+	print("panclassif succesfully imported")
 
 def binary_merge(names,homepath):
 	'''
@@ -39,10 +42,11 @@ def binary_merge(names,homepath):
 
 	Outputs:
 	--------
-	Merge all the cancer samples as cancer `bin_cancer` and 
-	normal samples as normal `bin_normal` for binary 
-	classification without adding labels.
-	"~/train_data"
+	Merge all the cancer and normal samples 
+	and generate one bin_cancer file for train 
+	data and one for test data. Similarly one 
+	bin_normal for train data and one for test 
+	data
 	'''
 	print("Merging for binary has started")
 	btrain(names,homepath)
@@ -68,10 +72,11 @@ def multi_merge(names,homepath):
 
 	Outputs:
 	--------
-	Merge all the cancer samples as cancer `bin_cancer` and 
-	normal samples as normal `bin_normal` for binary 
-	classification with labels added.
-	"~/train_data"
+	Merge all the cancer and normal samples 
+	and generate one mul_cancer file for train 
+	data and one for test data. Similarly one 
+	mul_normal for train data and one for test 
+	data
 	'''
 	print("Merging for multiclass has started")
 	mtrain(names,homepath)

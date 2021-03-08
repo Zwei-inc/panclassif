@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="panclassif", # Replace with your own username
-    version="1.21.7",
+    version="1.22.1",
     author="Md. Robiuddin, Kazi Ferdous Mahin",
     author_email="mrrobi040@gmail.com",
     description="A method to improve TCGA pancancer classifiers performance",
@@ -29,6 +29,7 @@ setuptools.setup(
        'pandas',
        'matplotlib',
        'imbalanced-learn',
-       'tensorflow'
+       'tensorflow',
+       'gseapy'
     ]
 )
