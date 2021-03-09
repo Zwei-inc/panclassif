@@ -24,7 +24,7 @@ Params
     matrix are located.
 * k : (int) 
     The number of top genes you want to choose per
-    cancer. (default: k=5)
+    cancer. (default: k=5) you can not put k less than 5
     
 ### dataProcess(homepath,names,cancerpath,smoothed_cancer,smoothed_normal)
 Params
