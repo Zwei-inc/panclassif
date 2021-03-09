@@ -83,7 +83,7 @@ Params
 ```python
 import panclassif as pc 
 
-names = pc.(featSelecthomepath,cancerpath,normalpath, k=1)
+names = pc.(featSelecthomepath,cancerpath,normalpath, k=5)
 pc.dataProcess(homepath,names,cancerpath,smoothed_cancer,smoothed_normal)
 pc.upsampled(names, homepath)
 pc.binary_merge(names, homepath)
