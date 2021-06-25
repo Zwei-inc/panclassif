@@ -2,7 +2,7 @@
 
 This is a complete machine learning pipeline package to work with TCGA cancer RNA-seq gene count data.
 
-[Github](https://github.com/Zwei-inc/panclassif)
+[PanClassif PyPi](https://pypi.org/project/panclassif/)
 
 
 
