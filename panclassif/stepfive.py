@@ -1,10 +1,11 @@
-def step5(homepath,names,smoothed_cancer,smoothed_normal):
+def step5(homepath,names,smoothed_cancer,smoothed_normal,scale_mode):
 	import os
 	import numpy as np
 	import pandas as pd
 	import csv
 	import random
 	from sklearn.preprocessing import StandardScaler
+	from sklearn.preprocessing import normalize
 
 	from os import listdir
 	from os.path import isfile, join
@@ -62,11 +63,18 @@ def step5(homepath,names,smoothed_cancer,smoothed_normal):
 	  cancer = cancer.T
 	  normal = normal.T
 
-	  std_scaler_can = StandardScaler()
-	  std_scaler_norm = StandardScaler()
+	  if(scale_mode == 0):
+	  	std_scaler_can = StandardScaler()
+		std_scaler_norm = StandardScaler()
 
-	  cancer = pd.DataFrame(std_scaler_can.fit_transform(cancer), columns=cancer.columns)
-	  normal = pd.DataFrame(std_scaler_norm.fit_transform(normal), columns=normal.columns)
+		cancer = pd.DataFrame(std_scaler_can.fit_transform(cancer), columns=cancer.columns)
+		normal = pd.DataFrame(std_scaler_norm.fit_transform(normal), columns=normal.columns)
+	  elif(scale_mode == 1):
+	  	norm_scaler_can = normalize()
+		norm_scaler_norm = normalize()
+
+		cancer = pd.DataFrame(norm_scaler_can.fit_transform(cancer), columns=cancer.columns)
+		normal = pd.DataFrame(norm_scaler_norm.fit_transform(normal), columns=normal.columns)
 
 	  cancer.to_csv(r''+parent_dir+'/cancer/'+names[index]+'.txt.bz2',compression="bz2", sep='\t',header=None,index=None,index_label=None)
 	  normal.to_csv(r''+parent_dir+'/normal/'+names[index]+'.txt.bz2',compression="bz2", sep='\t',header=None,index=None,index_label=None)

@@ -5,7 +5,7 @@ from .stepfour import step4
 from .stepfive import step5
 from .test_train_split import splitCancer, splitNormal
 
-def dataProcess(homepath,names,cancerpath,smoothed_cancer,smoothed_normal):
+def dataProcess(homepath,names,cancerpath,smoothed_cancer,smoothed_normal,scale_mode):
 	'''
 	Parameters
 	----------
@@ -24,6 +24,8 @@ def dataProcess(homepath,names,cancerpath,smoothed_cancer,smoothed_normal):
 	`smoothed_normal` (str): 
 	  Path where all the cancer's smoothed normal gene expression
 	  matrix are located.
+	`scale_mode` (int):
+	  Here (0 is for Standardization and 1 for normalization) for data scalling
 
 	Return:
 	-------
@@ -43,7 +45,7 @@ def dataProcess(homepath,names,cancerpath,smoothed_cancer,smoothed_normal):
 	step2(homepath)
 	step3(homepath)
 	step4(homepath,cancerpath,smoothed_cancer)
-	step5(homepath,names,smoothed_cancer,smoothed_normal)
+	step5(homepath,names,smoothed_cancer,smoothed_normal,scale_mode)
 	splitCancer(homepath,names)
 	splitNormal(homepath,names)
 	print("Data process has ended")

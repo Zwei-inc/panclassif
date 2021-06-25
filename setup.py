@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="panclassif", # Replace with your own username
-    version="1.22.1",
+    version="2.0.8",
     author="Md. Robiuddin, Kazi Ferdous Mahin",
     author_email="mrrobi040@gmail.com",
     description="A method to improve TCGA pancancer classifiers performance",

@@ -2,24 +2,37 @@ from sklearn.metrics import confusion_matrix, classification_report
 import pandas as pd 
 import seaborn as sns
 import matplotlib.pyplot as plt
+import matplotlib as mpl
 from matplotlib.pyplot import figure
 import os
 import warnings
 warnings.filterwarnings("ignore")
 def heatconmat(y_true, y_pred, homepath, mode="binary"):
+
+  cmap2 = mpl.colors.ListedColormap(sns.cubehelix_palette(n_colors=23, start=0, rot=0.4, gamma=1, hue=0.8, light=0.85, dark=0.15, reverse=False))
   sns.set_context('talk')
   df = pd.Series(y_true)
   if(mode == "binary"):
     plt.figure(figsize=(4,4))
   else:  
     plt.figure(figsize=(18,12))
-  sns.heatmap(confusion_matrix(df,y_pred),
+  data = confusion_matrix(df,y_pred)
+  sns.heatmap(data,
               annot=True,
               fmt='d',
               cbar=False,
-              cmap='gist_earth_r',
+              mask = data <= 0,
+              #cmap='gist_earth_r',
+              cmap=cmap2,
               yticklabels=sorted(df.unique()))
   plt.show()
+
+  # plt.imshow(data, interpolation='none')
+  # plt.colorbar()
+  # plt.xticks(sorted(df.unique()),fontsize=12)
+  # plt.yticks(sorted(df.unique()),fontsize=12)
+  # plt.grid(True)
+  # plt.show()
   print(classification_report(df,y_pred))
   # Directory 
   directory = "plots"

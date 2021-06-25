@@ -2,6 +2,8 @@
 
 This is a complete machine learning pipeline package to work with TCGA cancer RNA-seq gene count data.
 
+[Github](https://github.com/Zwei-inc/panclassif)
+
 
 
 ## Data prerequisition
@@ -25,8 +27,9 @@ Params
 * k : (int) 
     The number of top genes you want to choose per
     cancer. (default: k=5) you can not put k less than 5
-    
-### dataProcess(homepath,names,cancerpath,smoothed_cancer,smoothed_normal)
+----------
+   
+### dataProcess(homepath,names,cancerpath,smoothed_cancer,smoothed_normal,scale_mode)
 Params
 * homepath : (str)
 	  Path where you want to save all the generated files 
@@ -43,6 +46,11 @@ Params
 * smoothed_normal : (str) 
 	  Path where all the cancer's smoothed normal gene expression
 	  matrix are located.
+* scale_mode (int):
+        Here (0 is for Standardization and 1 for normalization) for data scalling
+----------
+
+
 ### upsampled(names, homepath)
 ### binary_merge(names, homepath)
 ### multi_merge(names, homepath)
@@ -52,7 +60,9 @@ Params
 	  function.
 * homepath : (str)  
 	  Path where you want to save all the generated files 
-	  and folders. 
+	  and folders.
+----------
+
 ### classification(homepath, classifier, mode, save_model)
 Params
 * homepath : (str)
@@ -71,19 +81,33 @@ Params
 * save_model : (str) 
       Optional parameter. Use it only if you want to save 
       the model. For example: save_model = "your_model_name"
+----------
+
 ### gsea(homepath)
 * homepath : (str)
       Path where you want to save all the generated files 
       and folders 
-    
+----------
+  
 ## Example
 ----------
+```txt
+homepath = '/home'
+cancerpath = '/home/cancer/'
+normalpath = '/home/normal/'
+
+smoothed_cancer = '/home/smoothed_cancer'
+smoothed_normal = '/home/smoothed_normal'
+
+```
+
+
 
 ### Data Load and Process Phase
 ```python
 import panclassif as pc 
-
-names = pc.(featSelecthomepath,cancerpath,normalpath, k=5)
+#You have to follow below order to work the code properly 
+names = pc.featSelect(homepath,cancerpath,normalpath, k=5)
 pc.dataProcess(homepath,names,cancerpath,smoothed_cancer,smoothed_normal)
 pc.upsampled(names, homepath)
 pc.binary_merge(names, homepath)

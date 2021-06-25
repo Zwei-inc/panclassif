@@ -14,7 +14,7 @@ def featSelect(homepath,cancerpath,normalpath,k=5):
       matrix are located.
     `k` (int): 
       The number of top genes you want to choose per
-      cancer. (default: k=5)
+      cancer. (default: k=5) you can not put k less than 5
 
   Return:
   -------
@@ -35,7 +35,8 @@ def featSelect(homepath,cancerpath,normalpath,k=5):
   from os import listdir
   from os.path import isfile, join
   import warnings
-
+  if(k<5):
+    k=5
   warnings.filterwarnings("ignore")
   cancerfiles = [f for f in listdir(cancerpath) if isfile(join(cancerpath, f))]
   normalfiles = [f for f in listdir(normalpath) if isfile(join(normalpath, f))]
