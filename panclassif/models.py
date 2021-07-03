@@ -1,4 +1,5 @@
 from sklearn.metrics import confusion_matrix, classification_report
+from matplotlib.colors import LinearSegmentedColormap
 import pandas as pd 
 import seaborn as sns
 import matplotlib.pyplot as plt
@@ -8,8 +9,10 @@ import os
 import warnings
 warnings.filterwarnings("ignore")
 def heatconmat(y_true, y_pred, homepath, mode="binary"):
-
-  cmap2 = mpl.colors.ListedColormap(sns.cubehelix_palette(n_colors=23, start=0, rot=0.4, gamma=1, hue=0.8, light=0.85, dark=0.15, reverse=False))
+  cmap_reds = plt.get_cmap("Reds")
+  num_colors = 50
+  colors = ["white", "grey"] + [cmap_reds(i / num_colors) for i in range(2, num_colors)]
+  cmap2 = LinearSegmentedColormap.from_list('', colors, num_colors)
   sns.set_context('talk')
   df = pd.Series(y_true)
   if(mode == "binary"):
@@ -20,8 +23,9 @@ def heatconmat(y_true, y_pred, homepath, mode="binary"):
   sns.heatmap(data,
               annot=True,
               fmt='d',
+              vmin=0, vmax=num_colors,
               cbar=False,
-              mask = data <= 0,
+              # mask = data <= 0,
               #cmap='gist_earth_r',
               cmap=cmap2,
               yticklabels=sorted(df.unique()))

@@ -5,13 +5,13 @@ def step5(homepath,names,smoothed_cancer,smoothed_normal,scale_mode):
 	import csv
 	import random
 	from sklearn.preprocessing import StandardScaler
-	from sklearn.preprocessing import normalize
+	from sklearn.preprocessing import Normalizer
 
 	from os import listdir
 	from os.path import isfile, join
 	import warnings
 	warnings.filterwarnings("ignore")
-	
+
 	cancerfiles = [f for f in listdir(smoothed_cancer) if isfile(join(smoothed_cancer, f))]
 	normalfiles = [f for f in listdir(smoothed_normal) if isfile(join(smoothed_normal, f))]
 
@@ -47,34 +47,38 @@ def step5(homepath,names,smoothed_cancer,smoothed_normal,scale_mode):
 	list.sort(normalfiles)
 
 	for index in range(len(names)):
-	  Cancer = pd.read_csv(smoothed_cancer+'/'+cancerfiles[index],header=None, delimiter = '\t')
-	  Normal = pd.read_csv(smoothed_normal+'/'+normalfiles[index],header=None, delimiter = '\t')
+		Cancer = pd.read_csv(smoothed_cancer+'/'+cancerfiles[index],header=None, delimiter = '\t')
+		Normal = pd.read_csv(smoothed_normal+'/'+normalfiles[index],header=None, delimiter = '\t')
 
-	  Cancer = Cancer.T
-	  Normal = Normal.T
+		Cancer = Cancer.T
+		Normal = Normal.T
 
-	  cancer = Cancer.drop(columns = selected_genes)
-	  normal = Normal.drop(columns = selected_genes)
+		cancer = Cancer.drop(columns = selected_genes)
+		normal = Normal.drop(columns = selected_genes)
 
-	  print(names[index])
-	  print(cancer.shape)
-	  print(normal.shape)
+		print(names[index])
+		print(cancer.shape)
+		print(normal.shape)
 
-	  cancer = cancer.T
-	  normal = normal.T
+		cancer = cancer.T
+		normal = normal.T
+		# std_scaler_can = StandardScaler()
+		# std_scaler_norm = StandardScaler()
 
-	  if(scale_mode == 0):
-	  	std_scaler_can = StandardScaler()
-		std_scaler_norm = StandardScaler()
+		# cancer = pd.DataFrame(std_scaler_can.fit_transform(cancer), columns=cancer.columns)
+		# normal = pd.DataFrame(std_scaler_norm.fit_transform(normal), columns=normal.columns)
+		if(scale_mode == 0):
+			std_scaler_can = StandardScaler()
+			std_scaler_norm = StandardScaler()
 
-		cancer = pd.DataFrame(std_scaler_can.fit_transform(cancer), columns=cancer.columns)
-		normal = pd.DataFrame(std_scaler_norm.fit_transform(normal), columns=normal.columns)
-	  elif(scale_mode == 1):
-	  	norm_scaler_can = normalize()
-		norm_scaler_norm = normalize()
+			cancer = pd.DataFrame(std_scaler_can.fit_transform(cancer), columns=cancer.columns)
+			normal = pd.DataFrame(std_scaler_norm.fit_transform(normal), columns=normal.columns)
+		elif(scale_mode == 1):
+			norm_scaler_can = Normalizer()
+			norm_scaler_norm = Normalizer()
 
-		cancer = pd.DataFrame(norm_scaler_can.fit_transform(cancer), columns=cancer.columns)
-		normal = pd.DataFrame(norm_scaler_norm.fit_transform(normal), columns=normal.columns)
+			cancer = pd.DataFrame(norm_scaler_can.fit_transform(cancer), columns=cancer.columns)
+			normal = pd.DataFrame(norm_scaler_norm.fit_transform(normal), columns=normal.columns)
 
-	  cancer.to_csv(r''+parent_dir+'/cancer/'+names[index]+'.txt.bz2',compression="bz2", sep='\t',header=None,index=None,index_label=None)
-	  normal.to_csv(r''+parent_dir+'/normal/'+names[index]+'.txt.bz2',compression="bz2", sep='\t',header=None,index=None,index_label=None)
+		cancer.to_csv(r''+parent_dir+'/cancer/'+names[index]+'.txt.bz2',compression="bz2", sep='\t',header=None,index=None,index_label=None)
+		normal.to_csv(r''+parent_dir+'/normal/'+names[index]+'.txt.bz2',compression="bz2", sep='\t',header=None,index=None,index_label=None)
