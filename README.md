@@ -10,7 +10,7 @@ This is a complete machine learning pipeline package to work with TCGA cancer RN
 
 * TCGA cancer & normal samples downloaded using TCGA2STAT 
 * smoothed version of the above collected data using knn-smoothing ([Wagner et al., 2017](https://www.biorxiv.org/content/early/2018/04/09/217737)) 
-* [Dataset Direct Download Click Here](https://cutt.ly/Dmo2xyH) 
+* [Dataset Direct Download Click Here](https://data.mendeley.com/datasets/pr9j7x7nmh/1) 
 
 
 ## Functions
